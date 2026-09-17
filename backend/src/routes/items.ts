@@ -1,13 +1,10 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { validateItem } from '../middleware/validateItem';
+import { readItems, writeItems, Item } from '../data/itemsStore';
 
 const router = Router();
 
-interface Item {
-  id: number;
-  name: string;
-}
 
 // In-memory "database" — resets when the server restarts
 let items: Item[] = [
@@ -58,6 +55,12 @@ router.delete('/:id', (req: Request, res: Response) => {
   }
   items.splice(index, 1);
   res.status(204).send();
+});
+// This route is for testing error handling. It will throw an error when accessed.
+router.get('/broken-test', async (req: Request, res: Response) => {
+  const items = await readItems(); // fine
+  throw new Error('Simulated crash'); // this gets swallowed silently
+  res.json(items);
 });
 
 export default router;
