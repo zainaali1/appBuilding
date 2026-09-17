@@ -1,0 +1,25 @@
+<div class="items-container">
+  <h2>Items</h2>
+
+  @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+  }
+
+  <div class="add-item">
+    <input
+      [(ngModel)]="newItemName"
+      (keyup.enter)="addItem()"
+      placeholder="New item name"
+    />
+    <button (click)="addItem()">Add</button>
+  </div>
+
+  <ul>
+    @for (item of items; track item.id) {
+      <li>
+        {{ item.name }}
+        <button (click)="removeItem(item.id)">Delete</button>
+      </li>
+    }
+  </ul>
+</div>

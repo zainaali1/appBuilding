@@ -1,0 +1,17 @@
+{
+  "name": "my-app",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run start --prefix frontend\""
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.5.1",
+    "concurrently": "^10.0.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^7.0.2"
+  }
+}
