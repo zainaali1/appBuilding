@@ -1,8 +1,7 @@
-/// <reference types="node" />
 import * as fs from 'fs/promises';
 import path from 'path';
 
-const DATA_FILE = path.join(__dirname, '../../data/items.json');
+const DATA_FILE = path.join(__dirname, 'items.json');
 
 export interface Item {
   id: number;
